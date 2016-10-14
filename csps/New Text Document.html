@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="http://s3.amazonaws.com/codecademy-content/courses/hour-of-code/js/alphabet.js"></script>
+  </head>
+  <body>
+    <canvas id="myCanvas"></canvas>
+    <script type="text/javascript" src="http://s3.amazonaws.com/codecademy-content/courses/hour-of-code/js/bubbles.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+	
+<h1>Welcome to CoachSafe PlaySafe!</h1>
+<p>We are developing a mobile app to help coaches and players to practice and play safely.</p>
+
+<p>Click the button to display the date.</p>
+
+<button onclick="displayDate()">The time is?</button>
+<button onclick="startTime()">Clock</button>
+<script>
+function displayDate() 
+{
+    document.getElementById("demo").innerHTML = Date();
+}
+
+function startTime() 
+{
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('txt').innerHTML =
+    h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 500);
+}
+
+function checkTime(i) 
+{
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+
+</script>
+
+
+
+
+<p id="demo"></p>
+
+<div id="txt"></div>
+
+<br>
+
+
+
+<br>
+<video width="320" height="240" controls>
+  <source src="videotest.mp4" type="video/mp4">
+
+</video><br>
+<a href="http://www.visitormap.org/" target="_top"><img src="http://www.visitormap.org/map/m:rktavgfciccghspp/s:1/c:000000/p:cross/y:2.png" alt="Free Visitor Maps at VisitorMap.org" border="0"></a><br>
+<object data=http://192.168.0.80 width="1600" height="1400"> <embed src=http://192.168.0.80 width="1600" height="1400"> </embed> Error: Embedded data could not be displayed. </object>
+  </body>
+</html>

@@ -1,0 +1,577 @@
+<html>
+  <head>
+    <!--Load the AJAX API-->
+
+    <style>
+.right {
+    position: relative;
+    
+}
+</style>
+
+    <script type="text/javascript" src="googlechart.js"></script>
+	 <script type="text/javascript" src="jq.js"></script>
+    <script type="text/javascript" src="al.js"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+           
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('number', 'second');
+        data.addColumn('number', 'gforce');
+        data.addRows([
+          [10, 3],
+          [20, 6],
+          [30, 5], 
+          [40, 4],
+          [50, 6],
+		  [60, 4],
+		  [70, 3],
+		  [80, 6],
+		  [90, 7],
+		  [100, 14],
+		  [110, 30],
+		  [120, 12],
+		  [130, 11],
+		  [140, 10],
+      [150, 45],
+		  [160, 22],
+		  [170, 14],
+		  [180, 18],
+		  [190, 12],
+
+        ]);
+
+        // Set chart options
+        var options = {
+          'title':'Player # 22 Impact G-Force',
+                       'width':600,
+                       'height':300,
+
+                      vAxis: {
+          title: 'Linear Acceleration (G)'
+        },
+
+        hAxis: {
+          title: 'Time (ms)'
+        },
+        
+
+
+        };
+ 
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+        function selectHandler() {
+		 var vid = document.getElementById("Video1");
+		  
+          var selectedItem = chart.getSelection()[0];
+          if (selectedItem) {
+            var times = data.getValue(selectedItem.row, 0);
+            times = times/10;
+           vid.currentTime= times;
+		   
+		//vid.load();
+		
+		//vid.play();
+			
+			
+          }
+        }
+
+        google.visualization.events.addListener(chart, 'select', selectHandler);    
+        chart.draw(data, options);
+
+       // var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+
+       
+
+        
+
+      }
+
+
+
+    </script>
+     
+
+     
+    <script type="text/javascript">
+      
+   function pause(){
+    var vid = document.getElementById("Video2");
+
+
+    
+    setTimeout(function () {
+      vid.play();
+    }, 3 * 1000);
+   }
+
+
+    </script>>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+
+<script type="text/javascript">
+Highcharts.createElement('link', {
+   href: 'https://fonts.googleapis.com/css?family=Unica+One',
+   rel: 'stylesheet',
+   type: 'text/css'
+}, null, document.getElementsByTagName('head')[0]);
+
+Highcharts.theme = {
+   colors: ["#2b908f", "#90ee7e", "#f45b5b", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
+      "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
+   chart: {
+      backgroundColor: {
+         linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
+         stops: [
+            [0, '#2a2a2b'],
+            [1, '#3e3e40']
+         ]
+      },
+      style: {
+         fontFamily: "'Unica One', sans-serif"
+      },
+      plotBorderColor: '#606063'
+   },
+   title: {
+      style: {
+         color: '#E0E0E3',
+         textTransform: 'uppercase',
+         fontSize: '20px'
+      }
+   },
+   subtitle: {
+      style: {
+         color: '#E0E0E3',
+         textTransform: 'uppercase'
+      }
+   },
+   xAxis: {
+      gridLineColor: '#707073',
+      labels: {
+         style: {
+            color: '#E0E0E3'
+         }
+      },
+      lineColor: '#707073',
+      minorGridLineColor: '#505053',
+      tickColor: '#707073',
+      title: {
+         style: {
+            color: '#A0A0A3'
+
+         }
+      }
+   },
+   yAxis: {
+      gridLineColor: '#707073',
+      labels: {
+         style: {
+            color: '#E0E0E3'
+         }
+      },
+      lineColor: '#707073',
+      minorGridLineColor: '#505053',
+      tickColor: '#707073',
+      tickWidth: 1,
+      title: {
+         style: {
+            color: '#A0A0A3'
+         }
+      }
+   },
+   tooltip: {
+      backgroundColor: 'rgba(0, 0, 0, 0.85)',
+      style: {
+         color: '#F0F0F0'
+      }
+   },
+   plotOptions: {
+      series: {
+         dataLabels: {
+            color: '#B0B0B3'
+         },
+         marker: {
+            lineColor: '#333'
+         }
+      },
+      boxplot: {
+         fillColor: '#505053'
+      },
+      candlestick: {
+         lineColor: 'white'
+      },
+      errorbar: {
+         color: 'white'
+      }
+   },
+   legend: {
+      itemStyle: {
+         color: '#E0E0E3'
+      },
+      itemHoverStyle: {
+         color: '#FFF'
+      },
+      itemHiddenStyle: {
+         color: '#606063'
+      }
+   },
+   credits: {
+      style: {
+         color: '#666'
+      }
+   },
+   labels: {
+      style: {
+         color: '#707073'
+      }
+   },
+
+   drilldown: {
+      activeAxisLabelStyle: {
+         color: '#F0F0F3'
+      },
+      activeDataLabelStyle: {
+         color: '#F0F0F3'
+      }
+   },
+
+   navigation: {
+      buttonOptions: {
+         symbolStroke: '#DDDDDD',
+         theme: {
+            fill: '#505053'
+         }
+      }
+   },
+
+   // scroll charts
+   rangeSelector: {
+      buttonTheme: {
+         fill: '#505053',
+         stroke: '#000000',
+         style: {
+            color: '#CCC'
+         },
+         states: {
+            hover: {
+               fill: '#707073',
+               stroke: '#000000',
+               style: {
+                  color: 'white'
+               }
+            },
+            select: {
+               fill: '#000003',
+               stroke: '#000000',
+               style: {
+                  color: 'white'
+               }
+            }
+         }
+      },
+      inputBoxBorderColor: '#505053',
+      inputStyle: {
+         backgroundColor: '#333',
+         color: 'silver'
+      },
+      labelStyle: {
+         color: 'silver'
+      }
+   },
+
+   navigator: {
+      handles: {
+         backgroundColor: '#666',
+         borderColor: '#AAA'
+      },
+      outlineColor: '#CCC',
+      maskFill: 'rgba(255,255,255,0.1)',
+      series: {
+         color: '#7798BF',
+         lineColor: '#A6C7ED'
+      },
+      xAxis: {
+         gridLineColor: '#505053'
+      }
+   },
+
+   scrollbar: {
+      barBackgroundColor: '#808083',
+      barBorderColor: '#808083',
+      buttonArrowColor: '#CCC',
+      buttonBackgroundColor: '#606063',
+      buttonBorderColor: '#606063',
+      rifleColor: '#FFF',
+      trackBackgroundColor: '#404043',
+      trackBorderColor: '#404043'
+   },
+
+   // special colors for some of the
+   legendBackgroundColor: 'rgba(0, 0, 0, 0.5)',
+   background2: '#505053',
+   dataLabelsColor: '#B0B0B3',
+   textColor: '#C0C0C0',
+   contrastTextColor: '#F0F0F3',
+   maskColor: 'rgba(255,255,255,0.3)'
+};
+
+// Apply the theme
+Highcharts.setOptions(Highcharts.theme);
+
+$(function () {
+    $(document).ready(function () {
+        Highcharts.setOptions({
+            global: {
+                useUTC: false
+            }
+        });
+
+        var $container = $('#container'),
+
+        chart = $container.highcharts();
+
+
+
+        $('#container').highcharts({
+            
+            
+            
+            chart: {
+                type: 'spline',
+                animation: Highcharts.svg, // don't animate in old IE
+                marginRight: 10,
+                width: 600,
+                height: 300,
+                events: {
+                    load: function () {
+                    var d = [1,1,2,2,1,2,1,2,1,3,4,6,8,2,2,30,41,18,15,16,11,12,13,14,15,16,20], i;
+                    
+                    var t = (new Date()).getTime()
+
+                        // set up the updating of the chart each second
+                        var series = this.series[0];
+                        
+                        setInterval(function () {
+                         var flag=true;
+                         
+                        
+                         var x = (new Date()).getTime(), // current time
+                                y = Math.round((x-t)/1000);
+                                if (y > 19) flag=false;
+                       
+                            series.addPoint([x, d[y]], flag, flag);
+                        
+                        
+                           
+                        }, 1000);
+                        
+                    }
+                }
+            },
+            title: {
+                text: 'Player #22 '
+            },
+            xAxis: {
+
+                type: 'datetime',
+                tickPixelInterval: 100
+            },
+            yAxis: {
+                title: {
+                    text: 'Impact data (G-Force)'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                        Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+                        Highcharts.numberFormat(this.y, 2);
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            exporting: {
+                enabled: true
+            },
+             plotOptions: {
+            series: {
+                cursor: 'pointer',
+                point: {
+                    events: {
+
+                        click: function () {
+                            var vid = document.getElementById("Video1");
+
+                            var vid2 = document.getElementById("Video2");
+                            var infodata = document.getElementById("info");
+
+                            
+
+                            var yvalue = this.y;
+
+                            infodata.innerHTML = '<b>' + this.series.name + '</b><br/>' +
+                        Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+                        Highcharts.numberFormat(this.y, 2)+"G";
+
+                            if(yvalue > 40){
+                            	vid.currentTime= 16;
+                            	vid.play();
+                            	
+                            	vid2.play();
+                            	
+
+                            }
+
+
+
+                            if(yvalue > 29){
+                            	vid.currentTime= 15;
+                            	vid.play();
+                            	
+                            	vid2.play();
+                            	
+
+                            }
+
+                            if(yvalue < 3){
+                            	vid.currentTime= 14;
+                            	vid.play();
+                            	
+                            	
+
+                            }
+                            if(yvalue < 2){
+                            	vid.currentTime= 1;
+                            	vid.play();
+                            	
+                            	
+
+                            }
+
+
+
+
+                            
+
+
+
+                            
+
+                           
+
+                             //alert('The impact is 45G ');
+                             
+                            //vid.load();
+                            //vid.play();
+    
+                            
+
+                        }
+                    }
+                }
+            }
+        },
+            series: [{
+                name: 'Sensor data',
+                data: (function () {
+                    // generate an array of random data
+                    var data = [],
+                        time = (new Date()).getTime(),
+                        i;
+
+                    for (i = -20; i <= 0; i += 1) {
+                        data.push({
+                            x: time + i * 1000,
+                            y: 0
+                        });
+                    }
+                    return data;
+                }())
+            }]
+        });
+    });
+});
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </head>
+  <body>
+  <canvas id="myCanvas"></canvas>
+    <script type="text/javascript" src="bubble.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+	<h1>Welcome to CoachSafe PlaySafe!</h1>
+<p>We are developing a mobile app to help coaches and players to practice and play safely.</p>
+
+    <!--Div that will hold the pie chart-->
+    <div id="chart_div" ></div>
+
+    <div id = "image">
+    <img src="C:\Users\KJZ5081\Desktop\csps\Video\CSPS.png" alt="HTML5 Icon" style="width:400px;height:300px;">
+    </div>
+	
+	<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto" class = "right">
+	
+    </div>
+
+    <div style  = "right" id = "info" > Impact sensor data: </div>
+
+	<div>
+	
+	<video id="Video1"  width="600" height="500" controls autoplay>
+ 
+     <source src="C:\Users\KJZ5081\Desktop\csps\Video\22.mp4" type="video/mp4">
+  </video>
+
+  <video id="Video2"  width="600" height="500" controls >
+
+ 
+     <source src="C:\Users\KJZ5081\Desktop\csps\Video\simulation.mp4" type="video/mp4">
+
+  </video>
+
+
+  </div>
+	
+	
+  </body>
+</html>
